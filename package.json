@@ -1,0 +1,45 @@
+{
+  "name": "pelias-polyline",
+  "author": "mapzen",
+  "version": "0.0.0",
+  "description": "Pelias polyline importer",
+  "homepage": "https://github.com/mapzen/pelias-polyline",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/run.js | tap-spec",
+    "lint": "jshint .",
+    "validate": "npm ls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mapzen/pelias-polyline.git"
+  },
+  "keywords": [
+    "pelias",
+    "stream",
+    "polyline",
+    "openstreetmap"
+  ],
+  "bugs": {
+    "url": "https://github.com/mapzen/pelias-polylines/issues"
+  },
+  "engines": {
+    "node": ">=0.12",
+    "npm": ">=2",
+    "elasticsearch": ">=2.3.0"
+  },
+  "dependencies": {
+    "check-types": "^7.0.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "precommit-hook": "^3.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
+}
