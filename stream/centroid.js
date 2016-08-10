@@ -5,15 +5,15 @@ var through = require('through2'),
 
 // https://github.com/turf-junkyard/turf-along
 // https://github.com/turf-junkyard/turf-line-distance
-var UNIT = 'km';
+var UNIT = 'kilometers';
 
 function centroid(){
   return through.obj( function( geojson, _, next ){
     try {
 
-      // total distance in km
+      // total distance in meters
       var dist = distance( geojson, UNIT );
-      geojson.properties.distance = dist;
+      geojson.properties.distance = (dist * 1000).toFixed(4);
 
       // interpolate middle of path
       var point = along( geojson, dist/2, UNIT );
