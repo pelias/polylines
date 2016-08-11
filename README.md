@@ -21,6 +21,79 @@ $ git clone https://github.com/pelias/polylines.git && cd polylines;
 $ npm install
 ```
 
+## Download data
+
+We are still deciding on the best format to publish polyline data for distribution.
+
+Currently there is a single planet-wide road network file which was cut on 9th Aug 2016, [download here](http://missinglink.files.s3.amazonaws.com/road_network.gz) (1.3GB compressed, 2.1GB uncompressed).
+
+Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
+
+If you would like to use a different source of polyline data you might need to tweak the defaults in `./stream/pipeline.js`, open an issue if you get stuck.
+
+## Configuration
+
+In order to tell the importer the location of your downloads, temp space and environmental settings you will first need to create a `~/pelias.json` file.
+
+See [the config](https://github.com/pelias/config) documentation for details on the structure of this file. Your relevant config info for the polyline module might look something like this:
+
+```javascript
+  "imports": {
+    "polyline": {
+      "adminLookup": true,
+      "datapath": "/data",
+      "files": [ "road_network.polylines" ]
+    }
+  }
+```
+
+### Administrative Hierarchy Lookup
+
+Polyline data doesn't have a full administrative hierarchy (ie, country, state,
+county, etc. names), but it can be calculated using data from [Who's on
+First](http://whosonfirst.mapzen.com/). See the [readme](https://github.com/pelias/wof-admin-lookup/blob/master/README.md)
+for [pelias/wof-admin-lookup](https://github.com/pelias/wof-admin-lookup) for more information.
+
+Set the `imports.polyline.adminLookup` property in `pelias.json` to `true` to enable admin lookup.
+
+## Running an import
+
+This will start the import process, it will take around 30 seconds to prime it's in-memory data and then you should see regular debugging output in the terminal.
+
+```bash
+$ PELIAS_CONFIG=<path_to_config_json> npm start
+```
+
+## CLI tool
+
+You can use the CLI tool to run imports and for debugging purposes:
+
+```bash
+$ node ./bin/cli.js --help
+Usage: cli.js [options]
+Options:
+
+  --file           read from file instead of stdin
+  --config         read filename from pelias config (overrides --file)
+  --pretty         indent output (stdout only)
+  --db             save to elasticsearch instead of printing to stdout
+
+```
+
+### Examples
+
+Run a 'dry-run' of the import process:
+
+```bash
+node ./bin/cli.js --config --pretty
+```
+
+Import a specific file to elasticsearch:
+
+```bash
+node ./bin/cli.js --file=/tmp/myfile.polylines --db
+```
+
 ## Issues
 
 If you have any issues getting set up or the documentation is missing something, please open an issue here: https://github.com/pelias/polylines/issues
