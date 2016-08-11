@@ -17,7 +17,7 @@ var through = require('through2'),
 **/
 function parser( precision ){
   return through.obj( function( row, _, next ){
-    var cols = row.split('\0');
+    var cols = row.split('\0').filter(function(x){ return x; });
     try {
       // must contain a polyline and at least one name
       if( cols.length > 1 ){
@@ -29,6 +29,8 @@ function parser( precision ){
         geojson.properties = { name: selectName(cols.slice(1)) };
 
         this.push( geojson );
+      } else {
+        logger.error( 'invalid polyline row', row );
       }
     } catch( e ){
       logger.error( 'polyline parsing error', e );

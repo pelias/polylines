@@ -15,8 +15,7 @@ module.exports.tests.interface = function(test, common) {
   });
 };
 
-// parse
-module.exports.tests.parse = function(test, common) {
+module.exports.tests.parse_simple = function(test, common) {
   test('parse: simple row', function(t) {
 
     var stream = parser(6);
@@ -40,6 +39,47 @@ module.exports.tests.parse = function(test, common) {
     // test assertions
     function assert( actual, enc, next ){
       t.deepEqual( actual, expected, 'valid row' );
+      next();
+    }
+
+    // run test
+    stream.pipe( through.obj( assert, function(){ t.end(); } ));
+    stream.write(row);
+    stream.end();
+  });
+};
+
+// row does not contain a valid name
+module.exports.tests.parse_invalid = function(test, common) {
+  test('parse: invalid row', function(t) {
+
+    var stream = parser(6);
+    var row = 'wuw}rAlbxk~Evb@]??n_C\??tJ?f~LiB\0';
+
+    // test assertions
+    function assert( actual, enc, next ){
+      t.fail('no valid rows'); // should not execute
+      next();
+    }
+
+    // run test
+    stream.pipe( through.obj( assert, function(){ t.end(); } ));
+    stream.write(row);
+    stream.end();
+  });
+};
+
+// select the longest name
+module.exports.tests.select_name = function(test, common) {
+  test('parse: select name', function(t) {
+
+    var stream = parser(6);
+    var row = ['a','foo','foooooooo','fooo bar'].join('\0');
+    var expected = 'foooooooo';
+
+    // test assertions
+    function assert( actual, enc, next ){
+      t.deepEqual( actual.properties.name, expected, 'longest name' );
       next();
     }
 
