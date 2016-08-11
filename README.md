@@ -33,7 +33,7 @@ If you would like to use a different source of polyline data you might need to t
 
 ## Configuration
 
-In order to tell the importer the location of your downloads, temp space and environmental settings you will first need to create a `~/pelias.json` file.
+In order to tell the importer the location of your downloads and environmental settings you will first need to create a `~/pelias.json` file.
 
 See [the config](https://github.com/pelias/config) documentation for details on the structure of this file. Your relevant config info for the polyline module might look something like this:
 
@@ -67,6 +67,8 @@ $ PELIAS_CONFIG=<path_to_config_json> npm start
 ## CLI tool
 
 You can use the CLI tool to run imports and for debugging purposes:
+
+**note:** by default the cli tool will read from `stdin` and write to `stdout`.
 
 ```bash
 $ node ./bin/cli.js --help
