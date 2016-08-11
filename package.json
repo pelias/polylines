@@ -7,6 +7,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "start": "node bin/cli.js --config --db",
+    "dry-run": "node bin/cli.js --config --pretty",
     "test": "node test/run.js | tap-spec",
     "lint": "jshint .",
     "validate": "npm ls"

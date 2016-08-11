@@ -14,7 +14,7 @@ function centroid(){
 
       // total distance in meters
       var dist = distance( geojson, UNIT );
-      geojson.properties.distance = (dist * 1000).toFixed(4);
+      geojson.properties.distance = parseFloat((dist * 1000).toFixed(4));
 
       // interpolate middle of path
       var point = along( geojson, dist/2, UNIT );

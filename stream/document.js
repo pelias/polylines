@@ -1,9 +1,15 @@
 
 var through = require('through2'),
+    check = require('check-types'),
     model = require('pelias-model'),
     logger = require('pelias-logger').get('polyline');
 
-function document( source, layer, idprefix){
+function document( source, layer, idprefix ){
+
+  // validate args
+  if( !check.nonEmptyString(source) ){ throw new Error('invalid source'); }
+  if( !check.nonEmptyString(layer) ){ throw new Error('invalid layer'); }
+  if( !check.nonEmptyString(idprefix) ){ throw new Error('invalid idprefix'); }
 
   /**
    * Used to track the UID of individual records passing through the stream
