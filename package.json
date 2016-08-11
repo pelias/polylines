@@ -31,6 +31,9 @@
   },
   "dependencies": {
     "check-types": "^7.0.0",
+    "minimist": "^1.2.0",
+    "pelias-logger": "0.0.8",
+    "pelias-model": "^4.2.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",

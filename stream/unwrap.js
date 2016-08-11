@@ -1,6 +1,7 @@
 
 var through = require('through2'),
-    wrap = require('../src/wrap');
+    wrap = require('../src/wrap'),
+    logger = require('pelias-logger').get('polyline');
 
 function unwrap(){
   return through.obj( function( geojson, _, next ){
@@ -15,7 +16,7 @@ function unwrap(){
       this.push( geojson );
 
     } catch( e ){
-      console.error( 'polyline unwrap error', e );
+      logger.error( 'polyline unwrap error', e );
     }
 
     next();

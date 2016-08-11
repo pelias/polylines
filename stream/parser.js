@@ -1,6 +1,7 @@
 
 var through = require('through2'),
-    polyline = require('polyline');
+    polyline = require('polyline'),
+    logger = require('pelias-logger').get('polyline');
 
 /**
   note: you must select the same 'precision' value that was used when encoding
@@ -30,7 +31,7 @@ function parser( precision ){
         this.push( geojson );
       }
     } catch( e ){
-      console.error( 'polyline parsing error', e );
+      logger.error( 'polyline parsing error', e );
     }
 
     next();

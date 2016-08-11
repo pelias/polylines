@@ -1,7 +1,8 @@
 
 var through = require('through2'),
     along = require('turf-along'),
-    distance = require('turf-line-distance');
+    distance = require('turf-line-distance'),
+    logger = require('pelias-logger').get('polyline');
 
 // https://github.com/turf-junkyard/turf-along
 // https://github.com/turf-junkyard/turf-line-distance
@@ -22,7 +23,7 @@ function centroid(){
       this.push( geojson );
 
     } catch( e ){
-      console.error( 'polyline centroid error', e );
+      logger.error( 'polyline centroid error', e );
     }
 
     next();
