@@ -5,7 +5,8 @@ var split = require('split'),
     parser = require('./parser'),
     unwrap = require('./unwrap'),
     centroid = require('./centroid'),
-    document = require('./document');
+    document = require('./document'),
+    adminLookup = require('./adminLookup');
 
 function pipeline( streamIn, streamOut ){
   return streamIn
@@ -14,6 +15,7 @@ function pipeline( streamIn, streamOut ){
     .pipe( unwrap() )
     .pipe( centroid() )
     .pipe( document( 'openstreetmap', 'street', 'polyline' ) )
+    .pipe( adminLookup() )
     .pipe( model.createDocumentMapperStream() )
     .pipe( streamOut );
 }

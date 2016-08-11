@@ -3,7 +3,8 @@ var tape = require('tape');
 var common = {};
 
 var tests = [
-  require('./index')
+  require('./index'),
+  require('./stream/parser')
 ];
 
 tests.map(function(t) {
