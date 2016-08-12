@@ -30,6 +30,13 @@ if( !!argv.config ){
   }
 }
 
+// check file exists
+try { fs.lstatSync( argv.file ); }
+catch( e ){
+  console.error( e.message );
+  process.exit(1);
+}
+
 // read from stdin or file
 var input = argv.file ? fs.createReadStream( argv.file ) : process.stdin;
 
