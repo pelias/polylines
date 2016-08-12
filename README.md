@@ -7,6 +7,8 @@
 ![Travis CI Status](https://travis-ci.org/pelias/polylines.svg)
 [![Gitter Chat](https://badges.gitter.im/pelias/pelias.svg)](https://gitter.im/pelias/pelias?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+The polyline importer facilitates importing road network data in to Pelias from a list of [polyline encoded](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) line strings.
+
 ## Prerequisites
 
 * NodeJS `0.12` or newer (the latest in the Node 4 series is currently recommended)
@@ -27,6 +29,19 @@ We are still deciding on the best format to publish polyline data for distributi
 
 Currently there is a single planet-wide road network file which was cut on 9th Aug 2016, [download here](http://missinglink.files.s3.amazonaws.com/road_network.gz) (1.3GB compressed, 2.1GB uncompressed).
 
+We also have some smaller extracts for testing purposed, a small number were manually cut from pbf for the geographies of our major contributors, open an issue if you would like another geography listed:
+
+**note:** these extracts were generated using a different method from the planet cut above.
+
+- [Berlin](http://missinglink.files.s3.amazonaws.com/berlin.gz) (1.9MB, 49k roads)
+- [New York](http://missinglink.files.s3.amazonaws.com/new_york.gz) (4.2MB, 102k roads)
+- [Finland](http://missinglink.files.s3.amazonaws.com/finland.gz) (7.7MB, 100k roads)
+- [Sweden](http://missinglink.files.s3.amazonaws.com/sweden.gz) (5.9MB, 126k roads)
+- [London](http://missinglink.files.s3.amazonaws.com/london.gz) (5.6MB, 166k roads)
+- [Paris](http://missinglink.files.s3.amazonaws.com/paris.gz) (2.9MB, 81k roads)
+- [San Francisco](http://missinglink.files.s3.amazonaws.com/san_francisco.gz) (1.3MB, 27k roads)
+- [New Zealand](http://missinglink.files.s3.amazonaws.com/new_zealand.gz) (3.1MB, 52k roads)
+
 Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
 
 If you would like to use a different source of polyline data you might need to tweak the defaults in `./stream/pipeline.js`, open an issue if you get stuck.
@@ -36,6 +51,8 @@ If you would like to use a different source of polyline data you might need to t
 In order to tell the importer the location of your downloads and environmental settings you will first need to create a `~/pelias.json` file.
 
 See [the config](https://github.com/pelias/config) documentation for details on the structure of this file. Your relevant config info for the polyline module might look something like this:
+
+**note:** the importer currently only supports a single entry in the `files` array.
 
 ```javascript
   "imports": {
