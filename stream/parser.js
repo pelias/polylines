@@ -29,7 +29,7 @@ function parser( precision ){
         geojson.properties = { name: selectName(cols.slice(1)) };
 
         this.push( geojson );
-      } else {
+      } else if( cols.length ) {
         logger.error( 'invalid polyline row', row );
       }
     } catch( e ){
