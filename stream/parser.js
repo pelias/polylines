@@ -1,6 +1,7 @@
 
 var through = require('through2'),
     polyline = require('polyline'),
+    extent = require('geojson-extent'),
     logger = require('pelias-logger').get('polyline');
 
 /**
@@ -27,6 +28,9 @@ function parser( precision ){
 
         // select name
         geojson.properties = { name: selectName(cols.slice(1)) };
+
+        // compute bbox
+        geojson = extent.bboxify( geojson );
 
         this.push( geojson );
       } else if( cols.length ) {
