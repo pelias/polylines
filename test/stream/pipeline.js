@@ -15,7 +15,7 @@ function setup(){
 // clean up
 function teardown(){
   delete process.env.PELIAS_CONFIG;
-  fs.unlink('/tmp/tmpPelias.json');
+  fs.unlinkSync('/tmp/tmpPelias.json');
 }
 
 // interface

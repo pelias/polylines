@@ -40,6 +40,18 @@ function document( source, layer, idprefix ){
       // distance meta data (in meters)
       doc.setMeta( 'distance', geojson.properties.distance );
 
+      // bounding box
+      doc.setBoundingBox({
+        upperLeft: {
+          lat: geojson.bbox[3],
+          lon: geojson.bbox[0]
+        },
+        lowerRight: {
+          lat: geojson.bbox[1],
+          lon: geojson.bbox[2]
+        }
+      });
+
       // push downstream
       this.push( doc );
 

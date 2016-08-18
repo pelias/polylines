@@ -35,6 +35,10 @@ module.exports.tests.document = function(test, common) {
         [ -117.125859, 44.017448 ],
         [ -117.133015, 44.017448 ],
         [ -117.133015, 44.017501 ]
+      ],
+      'bbox': [
+        -117.133015, 44.017448,
+        -117.125672, 44.020076
       ]
     };
 
@@ -42,7 +46,11 @@ module.exports.tests.document = function(test, common) {
     var expected = new model.Document( 'openstreetmap', 'street', 'polyline:0' )
       .setName( 'default', 'Freese Lane' )
       .setAddress( 'street', 'Freese Lane' )
-      .setCentroid({ lon: -117.1275530670822, lat: 44.017448040349564 });
+      .setCentroid({ lon: -117.1275530670822, lat: 44.017448040349564 })
+      .setBoundingBox({
+        upperLeft: { lat: 44.020076, lon: -117.133015 },
+        lowerRight: { lat: 44.017448, lon: -117.125672 }
+      });
 
     // test assertions
     function assert( actual, enc, next ){
