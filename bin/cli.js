@@ -1,5 +1,7 @@
+#!/usr/bin/env node
 
 var fs = require('fs'),
+    tty = require('tty'),
     path = require('path'),
     through = require('through2'),
     config = require('pelias-config'),
@@ -37,6 +39,12 @@ if( !!argv.file ){
     console.error( e.message );
     process.exit(1);
   }
+}
+
+// input is from stdin and it's attached to TTY instead of a pipe
+else if( tty.isatty( process.stdin ) ){
+  console.error( 'no data piped to stdin' );
+  process.exit(1);
 }
 
 // read from stdin or file
