@@ -31,7 +31,7 @@ Currently there is a single planet-wide road network file which was cut on 9th A
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
-We also have some smaller extracts for testing purposed, a small number were manually cut from pbf for the geographies of our major contributors, open an issue if you would like another geography listed:
+We also have some smaller extracts for testing purposes, a small number were manually cut from pbf for the geographies of our major contributors, open an issue if you would like another geography listed:
 
 **note:** these extracts were generated using a different method from the planet cut above.
 
