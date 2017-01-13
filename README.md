@@ -27,7 +27,7 @@ $ npm install
 
 We are still deciding on the best format to publish polyline data for distribution.
 
-Currently there is a single planet-wide road network file which was cut on 9th Aug 2016, [download here](http://missinglink.files.s3.amazonaws.com/road_network.gz) (1.3GB compressed, 2.1GB uncompressed).
+Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](http://missinglink.files.s3.amazonaws.com/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
