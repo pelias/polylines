@@ -4,6 +4,8 @@
 
 # Polyline importer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pelias/polylines.svg)](https://greenkeeper.io/)
+
 ![Travis CI Status](https://travis-ci.org/pelias/polylines.svg)
 [![Gitter Chat](https://badges.gitter.im/pelias/pelias.svg)](https://gitter.im/pelias/pelias?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
