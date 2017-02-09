@@ -38,7 +38,7 @@
     "pelias-config": "2.7.1",
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.1.0",
-    "pelias-model": "4.4.0",
+    "pelias-model": "4.5.0",
     "pelias-wof-admin-lookup": "3.0.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
