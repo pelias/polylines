@@ -12,7 +12,7 @@ module.exports.tests.interface = function(test, common) {
   test('interface: stream', function(t) {
     const stream = proxyquire('../../stream/pipeline', {
       'pelias-wof-admin-lookup': {
-        createLookupStream: () => {
+        create: () => {
           return through();
         }
       }
@@ -49,7 +49,7 @@ module.exports.tests.end_to_end = function(test, common) {
 
     const stream = proxyquire('../../stream/pipeline', {
       'pelias-wof-admin-lookup': {
-        createLookupStream: () => {
+        create: () => {
           return through.obj();
         }
       }
