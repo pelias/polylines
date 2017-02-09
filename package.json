@@ -39,7 +39,7 @@
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.1.0",
     "pelias-model": "4.4.0",
-    "pelias-wof-admin-lookup": "2.11.0",
+    "pelias-wof-admin-lookup": "pelias/wof-admin-lookup#incorporate-pip-service-directly",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",
@@ -47,8 +47,10 @@
     "turf-line-distance": "^3.0.12"
   },
   "devDependencies": {
+    "event-stream": "^3.3.4",
     "jshint": "^2.9.2",
     "precommit-hook": "^3.0.0",
+    "proxyquire": "^1.7.11",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0"
   },
