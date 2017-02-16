@@ -35,7 +35,7 @@
     "check-types": "^7.0.0",
     "geojson-extent": "^0.3.2",
     "minimist": "^1.2.0",
-    "pelias-config": "2.7.1",
+    "pelias-config": "2.8.0",
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.1.0",
     "pelias-model": "4.4.0",
