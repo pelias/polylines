@@ -7,7 +7,9 @@ var fs = require('fs'),
     config = require('pelias-config'),
     dbclient = require('pelias-dbclient'),
     argv = require('minimist')(process.argv.slice(2)),
-    pipeline = require('../stream/pipeline');
+    pipeline = require('../stream/pipeline'),
+    _ = require('lodash'),
+    logger = require('pelias-logger').get('polyline');
 
 // cli help
 if( argv.help ){
@@ -27,6 +29,12 @@ var stringify = through.obj( function( obj, _, next ){
 
 if( !!argv.config ){
   var cfg = config.generate();
+
+  if (_.has(cfg, 'imports.polyline.adminLookup')) {
+    logger.info('imports.polyline.adminLookup has been deprecated, ' +
+                'enable adminLookup using imports.adminLookup.enabled = true');
+  }
+
   if( cfg.imports.polyline && cfg.imports.polyline.datapath && cfg.imports.polyline.files[0] ){
     argv.file = path.join( cfg.imports.polyline.datapath, cfg.imports.polyline.files[0] );
   }
