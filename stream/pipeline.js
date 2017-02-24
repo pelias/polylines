@@ -6,7 +6,7 @@ var split = require('split'),
     unwrap = require('./unwrap'),
     centroid = require('./centroid'),
     document = require('./document'),
-    adminLookup = require('./adminLookup');
+    adminLookup = require('pelias-wof-admin-lookup').create;
 
 function pipeline( streamIn, streamOut ){
   return streamIn
