@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node bin/cli.js --config --db",
     "dry-run": "node bin/cli.js --config --pretty",
-    "test": "node test/run.js | tap-spec",
+    "test": "PELIAS_CONFIG=test/pelias.test.config.json node test/run.js | tap-spec",
     "lint": "jshint .",
     "validate": "npm ls"
   },
@@ -34,12 +34,13 @@
   "dependencies": {
     "check-types": "^7.0.0",
     "geojson-extent": "^0.3.2",
+    "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "pelias-config": "2.7.1",
+    "pelias-config": "2.8.0",
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.1.0",
     "pelias-model": "4.5.1",
-    "pelias-wof-admin-lookup": "3.0.0",
+    "pelias-wof-admin-lookup": "3.1.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",
