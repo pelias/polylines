@@ -1,30 +1,23 @@
 
 var fs = require('fs'),
     through = require('through2'),
-    pipeline = require('../../stream/pipeline');
+    pipeline = require('../../stream/pipeline'),
+    proxyquire = require('proxyquire').noCallThru();
 
 module.exports.tests = {};
-
-// use default pelias config
-function setup(){
-  var defaults = JSON.stringify( require('pelias-config').defaults, null, 2 );
-  fs.writeFileSync('/tmp/tmpPelias.json', defaults, { encoding: 'utf8' });
-  process.env.PELIAS_CONFIG = '/tmp/tmpPelias.json';
-}
-
-// clean up
-function teardown(){
-  delete process.env.PELIAS_CONFIG;
-  fs.unlinkSync('/tmp/tmpPelias.json');
-}
 
 // interface
 module.exports.tests.interface = function(test, common) {
 
   test('interface: stream', function(t) {
-    setup();
-    var stream = pipeline( through(), through() );
-    teardown();
+    const stream = proxyquire('../../stream/pipeline', {
+      'pelias-wof-admin-lookup': {
+        create: () => {
+          return through();
+        }
+      }
+    })(through(), through());
+
     t.equal(typeof stream, 'object', 'valid stream');
     t.equal(typeof stream._read, 'function', 'valid readable');
     t.equal(typeof stream._write, 'function', 'valid writeable');
@@ -54,10 +47,16 @@ module.exports.tests.end_to_end = function(test, common) {
       t.end();
     });
 
-    // run pipeline
-    setup();
-    pipeline( fixture, sink );
-    teardown();
+    const stream = proxyquire('../../stream/pipeline', {
+      'pelias-wof-admin-lookup': {
+        create: () => {
+          return through.obj();
+        }
+      }
+    });
+
+    stream(fixture, sink);
+
   });
 };
 
