@@ -11,7 +11,8 @@
     "dry-run": "node bin/cli.js --config --pretty",
     "test": "PELIAS_CONFIG=test/pelias.test.config.json node test/run.js | tap-spec",
     "lint": "jshint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "check-dependencies": "node_modules/.bin/npm-check --production"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test",
+    "check-dependencies"
   ]
 }
