@@ -38,7 +38,7 @@
     "geojson-extent": "^0.3.2",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "pelias-config": "2.9.0",
+    "pelias-config": "2.10.0",
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.2.0",
     "pelias-model": "4.6.0",
