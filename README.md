@@ -31,7 +31,7 @@ Currently there is a single planet-wide road network file which was cut on 8th J
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
-We also have some smaller extracts for testing purposes, a small number were manually cut from pbf for the geographies of our major contributors, open an issue if you would like another geography listed:
+We also have some smaller extracts for testing purposes, a small number were manually cut from pbf for the geographies of our major contributors. See the 'Generating a custom polylines extract from a PBF extract' section below for more info on how you can generate your own extracts:
 
 **note:** these extracts were generated using a different method from the planet cut above.
 
@@ -43,6 +43,7 @@ We also have some smaller extracts for testing purposes, a small number were man
 - [Paris](http://missinglink.files.s3.amazonaws.com/paris.gz) (2.9MB, 81k roads)
 - [San Francisco](http://missinglink.files.s3.amazonaws.com/san_francisco.gz) (1.3MB, 27k roads)
 - [New Zealand](http://missinglink.files.s3.amazonaws.com/new_zealand.gz) (3.1MB, 52k roads)
+- [Chicago](http://missinglink.files.s3.amazonaws.com/chicago.gz) (3.5MB, 88k roads)
 
 Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
 
@@ -71,9 +72,10 @@ See [the config](https://github.com/pelias/config) documentation for details on 
 Polyline data doesn't have a full administrative hierarchy (ie, country, state,
 county, etc. names), but it can be calculated using data from [Who's on
 First](http://whosonfirst.mapzen.com/). See the [readme](https://github.com/pelias/wof-admin-lookup/blob/master/README.md)
-for [pelias/wof-admin-lookup](https://github.com/pelias/wof-admin-lookup) for more information.
+for [pelias/wof-admin-lookup](https://github.com/pelias/wof-admin-lookup) for more information.  By default,
+adminLookup is enabled.  To disable, set `imports.adminLookup.enabled` to `false` in Pelias config.
 
-Set the `imports.polyline.adminLookup` property in `pelias.json` to `true` to enable admin lookup.
+**Note:** Admin lookup requires loading around 5GB of data into memory.
 
 ## Running an import
 
@@ -113,6 +115,36 @@ Import a specific file to elasticsearch:
 
 ```bash
 node ./bin/cli.js --file=/tmp/myfile.polylines --db
+```
+
+### Generating a custom polylines extract from a PBF extract
+
+You can generate a custom polylines extract using this [OSM PBF tool](https://github.com/missinglink/pbf).
+
+Note: golang 1.6+ is required, please ensure this is correctly installed before continuing.
+
+```
+$ go version
+go version go1.6.2 linux/amd64
+
+$ go get github.com/missinglink/pbf
+
+$ pbf --help
+
+$ wget https://s3.amazonaws.com/metro-extracts.mapzen.com/chicago_illinois.osm.pbf
+
+$ pbf streets chicago_illinois.osm.pbf | head
+
+avnfoAzllifD~NsZ?ePL}^rAetD^qpAT}i@Fmh@l@cdBLo]?sFHartzell Street
+gjpfoAnq}jfD?}IOqSe@oRu@qRcAsQcAsFfCyBhCiBpBgDdAgDrAeEr@eF\sFEuEe@cF}@eEsAiCiBgD?uYjA]l@m@l@kBDyAEkBu@{@u@m@sAOkANm@z@e@lAMhB\jAd@zAd@l@zA\Hartzell Street
+_bnfoAps~gfDG||AkAzzD}@nmDm@npBe@rFm@tEGz`@Ung@Gnh@U|h@O`g@Gnh@Mbf@O~]O`GHartzell Street
+uidfnApqsqeDvChWrApRV`SeApQaBbQqBhWW`St@pQjAlUMorningside Avenue
+elvrnA`helgDUsp@m@o{A?oIMorningside Avenue
+w{vznAjm~dgDwHkAmo@yMg|@aRMorningside Avenue
+sa}znApje{fDiB_fBgD}eDsAiuAmAwuAyAwvAsAgvAMorningside Avenue
+{cd}nAp~}dgDmgBbGal@vDgc@bFaS`H}NnH_c@jWoSdOyWtO{PpH{U~HiXrFy[fDmZl@gI_@_IyAyGyC}J{KeEmIMorningside Avenue
+sg|znA|w|dgDg_D]oeB]wpB_@Morningside Avenue
+eko{nAts|dgDtsEj@Morningside Avenue
 ```
 
 ## Issues
