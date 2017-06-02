@@ -42,7 +42,7 @@
     "pelias-dbclient": "2.0.0",
     "pelias-logger": "0.2.0",
     "pelias-model": "4.8.0",
-    "pelias-wof-admin-lookup": "3.5.0",
+    "pelias-wof-admin-lookup": "3.7.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",
