@@ -60,7 +60,6 @@ See [the config](https://github.com/pelias/config) documentation for details on 
 ```javascript
   "imports": {
     "polyline": {
-      "adminLookup": true,
       "datapath": "/data",
       "files": [ "road_network.polylines" ]
     }
