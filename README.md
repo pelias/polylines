@@ -55,7 +55,7 @@ In order to tell the importer the location of your downloads and environmental s
 
 See [the config](https://github.com/pelias/config) documentation for details on the structure of this file. Your relevant config info for the polyline module might look something like this:
 
-**note:** the importer currently only supports a single entry in the `files` array.
+**note:** the importer currently only supports a single entry in the `files` array. Also, the config file **only** accepts "polyline" (without the "s").
 
 ```javascript
   "imports": {
