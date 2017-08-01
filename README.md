@@ -44,6 +44,7 @@ We also have some smaller extracts for testing purposes, a small number were man
 - [San Francisco](https://s3.amazonaws.com/pelias-data/poylines/san_francisco.gz) (1.3MB, 27k roads)
 - [New Zealand](https://s3.amazonaws.com/pelias-data/poylines/new_zealand.gz) (3.1MB, 52k roads)
 - [Chicago](https://s3.amazonaws.com/pelias-data/poylines/chicago.gz) (3.5MB, 88k roads)
+- [Singapore](http://s3.amazonaws.com/pelias-data/poylines/singapore.gz) (0.6MB, 16k roads)
 
 Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
 
