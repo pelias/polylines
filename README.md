@@ -147,6 +147,9 @@ sa}znApje{fDiB_fBgD}eDsAiuAmAwuAyAwvAsAgvAMorningside Avenue
 {cd}nAp~}dgDmgBbGal@vDgc@bFaS`H}NnH_c@jWoSdOyWtO{PpH{U~HiXrFy[fDmZl@gI_@_IyAyGyC}J{KeEmIMorningside Avenue
 sg|znA|w|dgDg_D]oeB]wpB_@Morningside Avenue
 eko{nAts|dgDtsEj@Morningside Avenue
+
+$ pbf streets chicago_illinois.osm.pbf > chicago_illinois.polylines
+
 ```
 
 ## Issues
