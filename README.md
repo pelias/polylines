@@ -19,7 +19,7 @@ The polyline importer facilitates importing road network data in to Pelias from 
 Since this module is just one part of our geocoder, we'd recommend starting with our [Dockerfiles](https://github.com/pelias/dockerfiles/) for quick setup, or our [full installation docs](https://github.com/pelias/pelias-doc/blob/master/installing.md) to use this module.
 
 ```bash
-$ git clone https://github.com/pelias/polylines.git && cd polylines;
+$ git clone https://github.com/pelias/polylines.git && cd polylines
 $ npm install
 ```
 
