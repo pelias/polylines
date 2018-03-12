@@ -1,7 +1,5 @@
 > This repository is part of the [Pelias](https://github.com/pelias/pelias) project. Pelias is an open-source, open-data geocoder built by [Mapzen](https://www.mapzen.com/) that also powers [Mapzen Search](https://mapzen.com/projects/search). Our official user documentation is [here](https://mapzen.com/documentation/search/).
 
-**Work In Progress**
-
 # Polyline importer
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/pelias/polylines.svg)](https://greenkeeper.io/)
@@ -13,15 +11,15 @@ The polyline importer facilitates importing road network data in to Pelias from 
 
 ## Prerequisites
 
-* NodeJS `4` or newer (the latest in the Node 4 series is currently recommended)
+* NodeJS `6` or newer (the latest in the Node 8 series is currently recommended)
 * Elasticsearch 2.3+ (support for version 1.x has been deprecated).
 
 ## Clone and Install dependencies
 
-Since this module is just one part of our geocoder, we'd recommend starting with our [Vagrant image](https://github.com/pelias/vagrant) for quick setup, or our [full installation docs](https://github.com/pelias/pelias-doc/blob/master/installing.md) to use this module.
+Since this module is just one part of our geocoder, we'd recommend starting with our [Dockerfiles](https://github.com/pelias/dockerfiles/) for quick setup, or our [full installation docs](https://github.com/pelias/pelias-doc/blob/master/installing.md) to use this module.
 
 ```bash
-$ git clone https://github.com/pelias/polylines.git && cd polylines;
+$ git clone https://github.com/pelias/polylines.git && cd polylines
 $ npm install
 ```
 
@@ -29,7 +27,7 @@ $ npm install
 
 We are still deciding on the best format to publish polyline data for distribution.
 
-Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](https://s3.amazonaws.com/pelias-data/poylines/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
+Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
@@ -37,16 +35,16 @@ We also have some smaller extracts for testing purposes, a small number were man
 
 **note:** these extracts were generated using a different method from the planet cut above.
 
-- [Berlin](https://s3.amazonaws.com/pelias-data/poylines/berlin.gz) (1.9MB, 49k roads)
-- [New York](https://s3.amazonaws.com/pelias-data/poylines/new_york.gz) (4.2MB, 102k roads)
-- [Finland](https://s3.amazonaws.com/pelias-data/poylines/finland.gz) (7.7MB, 100k roads)
-- [Sweden](https://s3.amazonaws.com/pelias-data/poylines/sweden.gz) (5.9MB, 126k roads)
-- [London](https://s3.amazonaws.com/pelias-data/poylines/london.gz) (5.6MB, 166k roads)
-- [Paris](https://s3.amazonaws.com/pelias-data/poylines/paris.gz) (2.9MB, 81k roads)
-- [San Francisco](https://s3.amazonaws.com/pelias-data/poylines/san_francisco.gz) (1.3MB, 27k roads)
-- [New Zealand](https://s3.amazonaws.com/pelias-data/poylines/new_zealand.gz) (3.1MB, 52k roads)
-- [Chicago](https://s3.amazonaws.com/pelias-data/poylines/chicago.gz) (3.5MB, 88k roads)
-- [Singapore](http://s3.amazonaws.com/pelias-data/poylines/singapore.gz) (0.6MB, 16k roads)
+- [Berlin](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/berlin.gz) (1.9MB, 49k roads)
+- [New York](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/new_york.gz) (4.2MB, 102k roads)
+- [Finland](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/finland.gz) (7.7MB, 100k roads)
+- [Sweden](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/sweden.gz) (5.9MB, 126k roads)
+- [London](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/london.gz) (5.6MB, 166k roads)
+- [Paris](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/paris.gz) (2.9MB, 81k roads)
+- [San Francisco](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/san_francisco.gz) (1.3MB, 27k roads)
+- [New Zealand](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/new_zealand.gz) (3.1MB, 52k roads)
+- [Chicago](https://s3.amazonaws.com/pelias-data.nextzen.org/poylines/chicago.gz) (3.5MB, 88k roads)
+- [Singapore](http://s3.amazonaws.com/pelias-data.nextzen.org/poylines/singapore.gz) (0.6MB, 16k roads)
 
 Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
 
@@ -177,4 +175,4 @@ $ npm test
 
 ### Continuous Integration
 
-Travis tests every change against Node.js 4` and `6`.
+Travis tests every change against our supported Node.js versions.
