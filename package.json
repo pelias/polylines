@@ -30,7 +30,7 @@
     "url": "https://github.com/mapzen/pelias-polylines/issues"
   },
   "engines": {
-    "node": ">=4.0.0",
+    "node": ">=6.0.0",
     "npm": ">=2",
     "elasticsearch": ">=2.3.0"
   },
@@ -39,11 +39,11 @@
     "geojson-extent": "^0.3.2",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "pelias-dbclient": "2.3.0",
-    "pelias-config": "2.13.0",
-    "pelias-logger": "0.3.0",
-    "pelias-model": "5.2.0",
-    "pelias-wof-admin-lookup": "4.4.1",
+    "pelias-dbclient": "2.3.1",
+    "pelias-config": "2.14.0",
+    "pelias-logger": "0.3.1",
+    "pelias-model": "5.3.2",
+    "pelias-wof-admin-lookup": "4.5.4",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",

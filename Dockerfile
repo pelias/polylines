@@ -1,8 +1,12 @@
 # base image
 FROM pelias/baseimage
 
-# grab all of the valhalla software from ppa
-RUN apt-get update && apt-get install -y golang-go && rm -rf /var/lib/apt/lists/*
+# install go 1.10
+RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
+ENV GOPATH=/usr/src/.go
+RUN wget -qO- https://dl.google.com/go/go1.10.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+RUN mkdir -p "${GOPATH}"
+ENV PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
 
 # change working dir
 ENV WORKDIR /code/pelias/polylines
