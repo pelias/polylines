@@ -123,30 +123,31 @@ node ./bin/cli.js --file=/tmp/myfile.polylines --db
 
 You can generate a custom polylines extract using this [OSM PBF tool](https://github.com/missinglink/pbf).
 
-Note: golang 1.6+ is required, please ensure this is correctly installed before continuing.
+Note: golang 1.9+ is required, please ensure this is correctly installed before continuing.
 
 ```
 $ go version
-go version go1.6.2 linux/amd64
+go version go1.10 linux/amd64
 
 $ go get github.com/missinglink/pbf
 
 $ pbf --help
 
-$ wget https://s3.amazonaws.com/metro-extracts.mapzen.com/chicago_illinois.osm.pbf
+$ wget https://s3.amazonaws.com/metro-extracts.nextzen.org/chicago_illinois.osm.pbf
 
 $ pbf streets chicago_illinois.osm.pbf | head
 
-avnfoAzllifD~NsZ?ePL}^rAetD^qpAT}i@Fmh@l@cdBLo]?sFHartzell Street
-gjpfoAnq}jfD?}IOqSe@oRu@qRcAsQcAsFfCyBhCiBpBgDdAgDrAeEr@eF\sFEuEe@cF}@eEsAiCiBgD?uYjA]l@m@l@kBDyAEkBu@{@u@m@sAOkANm@z@e@lAMhB\jAd@zAd@l@zA\Hartzell Street
-_bnfoAps~gfDG||AkAzzD}@nmDm@npBe@rFm@tEGz`@Ung@Gnh@U|h@O`g@Gnh@Mbf@O~]O`GHartzell Street
-uidfnApqsqeDvChWrApRV`SeApQaBbQqBhWW`St@pQjAlUMorningside Avenue
-elvrnA`helgDUsp@m@o{A?oIMorningside Avenue
-w{vznAjm~dgDwHkAmo@yMg|@aRMorningside Avenue
-sa}znApje{fDiB_fBgD}eDsAiuAmAwuAyAwvAsAgvAMorningside Avenue
-{cd}nAp~}dgDmgBbGal@vDgc@bFaS`H}NnH_c@jWoSdOyWtO{PpH{U~HiXrFy[fDmZl@gI_@_IyAyGyC}J{KeEmIMorningside Avenue
-sg|znA|w|dgDg_D]oeB]wpB_@Morningside Avenue
-eko{nAts|dgDtsEj@Morningside Avenue
+yop}nApvc_gDqAywAEast Altgeld Avenue
+wto}nAfpl_gDqFuzEEast Altgeld Avenue
+_mr}nAbvb~fDkFmQ}BkQ}AkdBEast Altgeld Avenue
+mwp}nAt{q~fDKkW]yFi@mDwBcIeS_f@qE}LmDyMwAaH_AoE}C{Uy@mMYaHyCwlDSsFi@iFwEaUEast Altgeld Avenue
+smvaoAzxdmfDwbAtyB}cAvzBscAzxBmcAhyB{j@pnAmE|HNorth Navarre Avenue
+wq~hoAvt~dgD?hGJfD\fCl@zBr@dBrBbDv@jBx@hCpBtBBbCDnB@`@gBpC]jBEzCF~BL~AdBxH?VKpSHidden Lakes Boulevard
+o~cooAb~}xfDn_@i^Taggert Court
+{garnA|_~zfDo@qdA}@kEWater Tower Lane
+ka|}nAh`jlgDdD{C~MmNrByHTall Grass Court
+onvdnAbntyfDpMvOhHtCTall Grass Court
+
 
 $ pbf streets chicago_illinois.osm.pbf > chicago_illinois.polylines
 
