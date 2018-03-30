@@ -27,7 +27,7 @@ $ npm install
 
 We are still deciding on the best format to publish polyline data for distribution.
 
-Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
+Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
@@ -35,15 +35,15 @@ We also have some smaller extracts for testing purposes, a small number were man
 
 **note:** these extracts were generated using a different method from the planet cut above.
 
-- [Berlin](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/berlin.gz) (1.9MB, 49k roads)
-- [New York](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/new_york.gz) (4.2MB, 102k roads)
-- [Finland](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/finland.gz) (7.7MB, 100k roads)
-- [Sweden](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/sweden.gz) (5.9MB, 126k roads)
-- [London](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/london.gz) (5.6MB, 166k roads)
-- [Paris](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/paris.gz) (2.9MB, 81k roads)
-- [San Francisco](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/san_francisco.gz) (1.3MB, 27k roads)
-- [New Zealand](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/new_zealand.gz) (3.1MB, 52k roads)
-- [Chicago](https://pelias-data.nextzen.org.s3.amazonaws.com/poylines/chicago.gz) (3.5MB, 88k roads)
+- [Berlin](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/berlin.gz) (1.9MB, 49k roads)
+- [New York](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/new_york.gz) (4.2MB, 102k roads)
+- [Finland](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/finland.gz) (7.7MB, 100k roads)
+- [Sweden](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/sweden.gz) (5.9MB, 126k roads)
+- [London](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/london.gz) (5.6MB, 166k roads)
+- [Paris](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/paris.gz) (2.9MB, 81k roads)
+- [San Francisco](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/san_francisco.gz) (1.3MB, 27k roads)
+- [New Zealand](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/new_zealand.gz) (3.1MB, 52k roads)
+- [Chicago](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/chicago.gz) (3.5MB, 88k roads)
 - [Singapore](http://pelias-data.nextzen.org.s3.amazonaws.com/poylines/singapore.gz) (0.6MB, 16k roads)
 
 Once you have downloaded and extracted the data you will need to follow the *Configuration* steps below in order to tell Pelias where they can be found.
