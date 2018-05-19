@@ -2,7 +2,6 @@
 FROM pelias/baseimage
 
 # install go 1.10
-RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
 ENV GOPATH=/usr/src/.go
 RUN wget -qO- https://dl.google.com/go/go1.10.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 RUN mkdir -p "${GOPATH}"
