@@ -27,5 +27,7 @@ RUN npm install
 # run tests
 RUN npm test
 
+USER pelias
+
 # add convenience script - used to extract the first available pbf file to 0sv
 ADD docker_extract.sh /code/pelias/polylines/docker_extract.sh
