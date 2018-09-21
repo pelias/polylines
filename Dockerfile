@@ -18,11 +18,12 @@ ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 # get go dependencies
 RUN go get github.com/missinglink/pbf
 
+# copy package.json first to prevent npm install being rerun when only code changes
+COPY ./package.json ${WORKDIR}
+RUN npm install
+
 # copy code into image
 ADD . ${WORKDIR}
-
-# install npm dependencies
-RUN npm install
 
 # run tests
 RUN npm test
