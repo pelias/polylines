@@ -5,10 +5,11 @@ set -euo pipefail
 mkdir -p /data/polylines/;
 
 # enumerate a list of PBF files
-PBF_FILES=($((ls -1 /data/openstreetmap/*.pbf || true) >/dev/null 2>&1));
+shopt -s nullglob
+PBF_FILES=(/data/openstreetmap/*.pbf);
 
 # ensure there is at least one PBF file in the osm directory
-if [ ${#PBF_FILES[@]} -eq 0 ]; then
+if [[ ${#PBF_FILES[@]} -eq 0 ]]; then
   2>&1 echo 'no *.pbf files found in /data/openstreetmap directory';
   exit 1;
 fi
