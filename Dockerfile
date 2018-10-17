@@ -7,6 +7,12 @@ RUN wget -qO- https://dl.google.com/go/go1.10.linux-amd64.tar.gz | tar -C /usr/l
 RUN mkdir -p "${GOPATH}"
 ENV PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
 
+# Install valhalla (Requires Ubuntu 16.04)
+RUN add-apt-repository -y ppa:valhalla-core/valhalla && \
+    apt-get update
+
+RUN apt-get install -y valhalla-bin
+
 # change working dir
 ENV WORKDIR /code/pelias/polylines
 WORKDIR ${WORKDIR}
@@ -17,6 +23,12 @@ ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
 # get go dependencies
 RUN go get github.com/missinglink/pbf
+
+RUN valhalla_build_config \
+  --mjolnir-tile-dir '/data/valhalla/valhalla_tiles' \
+  --mjolnir-tile-extract '/data/valhalla/valhalla_tiles.tar' \
+  --mjolnir-timezone '/data/valhalla/valhalla_tiles/timezones.sqlite' \
+  --mjolnir-admin '/data/valhalla/valhalla_tiles/admins.sqlite' > valhalla.json
 
 # copy package.json first to prevent npm install being rerun when only code changes
 COPY ./package.json ${WORKDIR}

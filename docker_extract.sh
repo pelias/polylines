@@ -3,6 +3,7 @@ set -euo pipefail
 
 # ensure data subdirectory exists
 mkdir -p /data/polylines/;
+mkdir -p /data/valhalla/valhalla_tiles
 
 # enumerate a list of PBF files
 shopt -s nullglob
@@ -17,23 +18,24 @@ fi
 # truncate polylines file
 echo '' > /data/polylines/extract.0sv;
 
+# create empty sqlite db for valhalla
+touch /data/valhalla/valhalla_tiles/timezones.sqlite
+touch /data/valhalla/valhalla_tiles/admins.sqlite
+
 # iterate over all PBF files in the osm directory
 for PBF_FILE in "${PBF_FILES[@]}"; do
 
-  # give a warning if the filesize is over 1GB
-  # the missinglink/pbf library is memory-bound and cannot safely handle very large extracts
-  find "${PBF_FILE}" -maxdepth 1 -size +1G | while read file; do
-    2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
-    2>&1 echo "${PBF_FILE} is very large.";
-    2>&1 echo 'You will likely experience memory issues working with large extracts like this.';
-    2>&1 echo 'We strongly recommend using Valhalla to produce extracts for large PBF extracts.';
-    2>&1 echo 'see: https://github.com/pelias/polylines#download!data';
-    2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
-  done
-
   # convert pbf file to 0sv (polylines) format, appending results to polyline file
   echo "converting ${PBF_FILE} to /data/polylines/extract.0sv";
-  pbf streets "${PBF_FILE}" >> /data/polylines/extract.0sv;
+
+  if [[ -n $(find "${PBF_FILE}" -maxdepth 1 -size +1G) ]]; then
+    # Use Valhalla to generate polylines
+    valhalla_build_tiles -c valhalla.json /data/openstreetmap/*.osm.pbf;
+    find /data/valhalla/valhalla_tiles | sort -n | tar cf /data/valhalla/valhalla_tiles.tar --no-recursion -T -
+    valhalla_export_edges --config valhalla.json >> /data/polylines/extract.0sv;
+  else
+    pbf streets "${PBF_FILE}" >> /data/polylines/extract.0sv;
+  fi
 
 done
 
