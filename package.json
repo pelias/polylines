@@ -41,7 +41,7 @@
     "pelias-config": "^3.0.2",
     "pelias-logger": "^1.2.1",
     "pelias-model": "^5.5.2",
-    "pelias-wof-admin-lookup": "^4.6.5",
+    "pelias-wof-admin-lookup": "^5.0.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
     "through2": "^2.0.1",
