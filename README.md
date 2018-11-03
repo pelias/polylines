@@ -14,8 +14,7 @@ The polyline importer facilitates importing road network data in to Pelias from 
 
 ## Prerequisites
 
-* NodeJS `6` or newer (the latest in the Node 8 series is currently recommended)
-* Elasticsearch 2.3+ (support for version 1.x has been deprecated).
+Node.js is required. See [Pelias software requirements](https://github.com/pelias/documentation/blob/master/requirements.md) for supported versions.
 
 ## Clone and Install dependencies
 
