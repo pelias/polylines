@@ -44,7 +44,7 @@
     "pelias-wof-admin-lookup": "^5.0.0",
     "polyline": "^0.2.0",
     "split": "^1.0.0",
-    "through2": "^2.0.1",
+    "through2": "^3.0.0",
     "turf-along": "^3.0.12",
     "turf-line-distance": "^3.0.12"
   },
