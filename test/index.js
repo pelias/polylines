@@ -1,13 +1,12 @@
-
-var index = require('../index');
-var check = require('check-types');
+const _ = require('lodash');
+const index = require('../index');
 
 module.exports.tests = {};
 
 // test index
 module.exports.tests.index = function(test, common) {
   test('interface: index', function(t) {
-    t.true( check.object( index ), 'index file exists');
+    t.true( _.isObject( index ), 'index file exists');
     t.end();
   });
 };
