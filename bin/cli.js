@@ -59,7 +59,7 @@ else if( tty.isatty( process.stdin ) ){
 var input = argv.file ? fs.createReadStream( argv.file ) : process.stdin;
 
 // write to stdout or elasticsearch
-var output = !!argv.db ? dbclient() : stringify;
+var output = !!argv.db ? dbclient({name: 'polylines'}) : stringify;
 
 // run the importer
 pipeline( input, output );
