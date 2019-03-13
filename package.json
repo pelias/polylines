@@ -33,7 +33,6 @@
     "elasticsearch": ">=2.3.0"
   },
   "dependencies": {
-    "check-types": "^7.0.0",
     "geojson-extent": "^0.3.2",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
