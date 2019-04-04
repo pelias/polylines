@@ -27,9 +27,9 @@ $ npm install
 
 ## Download data
 
-We are still deciding on the best format to publish polyline data for distribution.
+Pre-processed planet-wide road network files are available to download from [geocode.earth](https://geocode.earth/data).
 
-Currently there is a single planet-wide road network file which was cut on 8th Jan 2017, [download here](https://s3.amazonaws.com/pelias-data.nextzen.org/polylines/road_network.gz) (1.5GB compressed, 2.3GB uncompressed).
+> Note: the file extensions `.0sv` and `.polylines` are used interchangeably, they both refer to the same file format.
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
