@@ -29,7 +29,7 @@ $ npm install
 
 Pre-processed planet-wide road network files are available to download from [geocode.earth](https://geocode.earth/data).
 
-> Note: the file extensions `.0sv` and `.polylines` are used interchangeably, they both refer to the same file format.
+> Note: the file extensions `.0sv` and `.polylines` are used interchangeably, they both refer to the same file format; however there is code that looks for the `.0sv` extension which is therfore preferable.
 
 For more information on how the extract was generated, see the wiki article: [Generating polylines from Valhalla](https://github.com/pelias/polylines/wiki/Generating-polylines-from-Valhalla).
 
@@ -64,7 +64,7 @@ See [the config](https://github.com/pelias/config) documentation for details on 
   "imports": {
     "polyline": {
       "datapath": "/data",
-      "files": [ "road_network.polylines" ]
+      "files": [ "road_network.0sv" ]
     }
   }
 ```
