@@ -52,6 +52,37 @@ Once you have downloaded and extracted the data you will need to follow the *Con
 
 If you would like to use a different source of polyline data you might need to tweak the defaults in `./stream/pipeline.js`, open an issue if you get stuck.
 
+## Generating your own data
+
+You can generate a polylines file from your own data, the data MUST be encoded in the following format:
+
+- each row of the file represents one document, rows are terminated with a newline (`\n`) character.
+- rows contain multiple columns, columns are delimited with a null byte (`\0`) character.
+
+The geometry is encoded using the [Google polyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) at a precision of `6`.
+
+NOTE: many libraries will default the precision to `5`, this will cause errors, be sure to select the correct [polyline precision](https://www.mapzen.com/blog/polyline-precision/).
+
+There is a script included in this repo which is capable of re-encoding files generated with precison `5` to precision `6`, you can find it in `bin/reencode.js`.
+
+Each row begins with the encoded polyline, followed by a null byte (`\0`) then followed by one or more names (delimited with a null byte) and finally terminated with a newline (`\n`).
+
+Example:
+
+```
+{polyline6}\0{name}\0{name}\n
+```
+
+```
+oozdnAwvbsBoA?g@{@SoAf@{@nAg@Plaça de la Creu
+```
+
+```
+00000000: 6f6f 7a64 6e41 7776 6273 426f 413f 6740  oozdnAwvbsBoA?g@
+00000010: 7b40 536f 4166 407b 406e 4167 4000 506c  {@SoAf@{@nAg@.Pl
+00000020: 61c3 a761 2064 6520 6c61 2043 7265 750a  a..a de la Creu.
+```
+
 ## Configuration
 
 In order to tell the importer the location of your downloads and environmental settings you will first need to create a `~/pelias.json` file.
