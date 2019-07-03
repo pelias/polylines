@@ -53,7 +53,7 @@ module.exports.tests.parse_simple = function(test, common) {
   });
 };
 
-// row does not contain a valid name
+// row does not follow polyline schema
 module.exports.tests.parse_invalid = function(test, common) {
   test('parse: invalid row', function(t) {
 
@@ -88,6 +88,42 @@ module.exports.tests.select_name = function(test, common) {
     }
 
     // run test
+    stream.pipe( through.obj( assert, function(){ t.end(); } ));
+    stream.write(row);
+    stream.end();
+  });
+};
+
+// URLs are filtered out
+module.exports.tests.filter_url = function(test, common) {
+  test('parse: filter URL', function(t) {
+
+    var stream = parser(6);
+    var row = ['a','foo','foooooooo','https://this-website-should-not-be-the-name.com'].join('\0');
+    var expected = 'foooooooo';
+
+    function assert( actual, enc, next ){
+      t.deepEqual( actual.properties.name, expected, 'longest non-URL name selected' );
+      next();
+    }
+
+    stream.pipe( through.obj( assert, function(){ t.end(); } ));
+    stream.write(row);
+    stream.end();
+  });
+};
+
+module.exports.tests.filter_only_url = function(test, common) {
+  test('parse:document with only URL name is skipped', function(t) {
+
+    var stream = parser(6);
+    var row = ['polylineEncodedString','https://this-website-should-not-be-the-name.com'].join('\0');
+
+    function assert( actual, enc, next ){
+      t.fail('no valid rows'); // should not execute
+      next();
+    }
+
     stream.pipe( through.obj( assert, function(){ t.end(); } ));
     stream.write(row);
     stream.end();

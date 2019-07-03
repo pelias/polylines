@@ -26,8 +26,15 @@ function parser( precision ){
         // decode polyline
         var geojson = polyline.toGeoJSON(cols[0], precision);
 
+        const name = selectName(cols.slice(1));
+
+        // skip record if there is no valid name
+        if (!name) {
+          return next();
+        }
+
         // select name
-        geojson.properties = { name: selectName(cols.slice(1)) };
+        geojson.properties = { name: name };
 
         // compute bbox
         geojson = extent.bboxify( geojson );
@@ -47,11 +54,14 @@ function parser( precision ){
 // each connected road can have one or more names
 // we select one name to be the default.
 function selectName( names ){
-  // return the longest name
+  // filter out URLs
+  // then return the longest name
   // @todo: can we improve this logic?
-  return names.reduce( function( a, b ){
+  return names.filter( function ( name) {
+    return !name.match(/^http(s)?:\/\//);
+  }).reduce( function( a, b ){
     return a.length > b.length ? a : b;
-  });
+  }, '');
 }
 
 module.exports = parser;
