@@ -19,9 +19,9 @@ module.exports.tests.interface = function(test, common) {
 module.exports.tests.centroid = function(test, common) {
   test('centroid', function(t) {
 
-    var stream = centroid();
-    var expected = [ -117.1275530670822, 44.017448040349564 ];
-    var geojson = {
+    const stream = centroid();
+    const expected = [ -117.12755306708222, 44.017448040349564 ];
+    const geojson = {
       'type': 'LineString',
       'properties': {
         'name': 'Freese Lane'
@@ -44,7 +44,7 @@ module.exports.tests.centroid = function(test, common) {
     // test assertions
     function assert( actual, enc, next ){
       t.deepEqual( actual.properties.centroid, expected, 'valid centroid' );
-      t.deepEqual( actual.properties.distance, 885.5741, 'valid distance meta data' );
+      t.deepEqual( actual.properties.distance, 885.2975, 'valid distance meta data' );
       next();
     }
 

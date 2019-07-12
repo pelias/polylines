@@ -1,8 +1,7 @@
-
-var through = require('through2'),
-    along = require('turf-along'),
-    distance = require('turf-line-distance'),
-    logger = require('pelias-logger').get('polyline');
+const through = require('through2');
+const along = require('@turf/along').default;
+const length = require('@turf/length').default;
+const logger = require('pelias-logger').get('polyline');
 
 // https://github.com/turf-junkyard/turf-along
 // https://github.com/turf-junkyard/turf-line-distance
@@ -13,7 +12,7 @@ function centroid(){
     try {
 
       // total distance in meters
-      var dist = distance( geojson, UNIT );
+      var dist = length( geojson, UNIT );
       geojson.properties.distance = parseFloat((dist * 1000).toFixed(4));
 
       // interpolate middle of path

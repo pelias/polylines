@@ -1,8 +1,7 @@
-
-var through = require('through2'),
-    polyline = require('polyline'),
-    extent = require('geojson-extent'),
-    logger = require('pelias-logger').get('polyline');
+const through = require('through2');
+const polyline = require('@mapbox/polyline');
+const extent = require('@mapbox/geojson-extent');
+const logger = require('pelias-logger').get('polyline');
 
 /**
   note: you must select the same 'precision' value that was used when encoding
