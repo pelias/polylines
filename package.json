@@ -33,7 +33,7 @@
     "elasticsearch": ">=2.3.0"
   },
   "dependencies": {
-    "geojson-extent": "^0.3.2",
+    "@mapbox/geojson-extent": "^0.3.2",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
     "pelias-config": "^4.0.0",
@@ -41,11 +41,11 @@
     "pelias-logger": "^1.2.1",
     "pelias-model": "^5.5.2",
     "pelias-wof-admin-lookup": "^5.3.0",
-    "polyline": "^0.2.0",
+    "@mapbox/polyline": "^1.1.0",
     "split": "^1.0.0",
     "through2": "^3.0.0",
-    "turf-along": "^3.0.12",
-    "turf-line-distance": "^3.0.12"
+    "@turf/along": "^6.0.1",
+    "@turf/length": "^6.0.2"
   },
   "devDependencies": {
     "jshint": "^2.9.2",
