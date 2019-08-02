@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec node --max_old_space_size=6000 bin/cli.js --config --db
+exec node --max_old_space_size=8000 bin/cli.js --config --db
