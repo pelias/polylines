@@ -43,6 +43,8 @@ module.exports.tests.end_to_end = function(test, common) {
       actual.push( data );
       next();
     }, function assert(){
+      // uncomment to quickly update fixture
+      //fs.writeFileSync(__dirname + '/../fixture/actual.json', actual.map(JSON.stringify).join('\n'));
       t.deepEqual( actual, expected, 'valid import' );
       t.end();
     });
