@@ -37,7 +37,7 @@
     "@turf/length": "^6.0.2",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "pelias-config": "^4.5.0",
+    "pelias-config": "^4.8.0",
     "pelias-dbclient": "^2.13.0",
     "pelias-logger": "^1.2.1",
     "pelias-model": "^7.1.0",
