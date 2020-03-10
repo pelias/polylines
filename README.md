@@ -104,7 +104,7 @@ See [the config](https://github.com/pelias/config) documentation for details on 
 
 Polyline data doesn't have a full administrative hierarchy (ie, country, state,
 county, etc. names), but it can be calculated using data from [Who's on
-First](http://whosonfirst.mapzen.com/). See the [readme](https://github.com/pelias/wof-admin-lookup/blob/master/README.md)
+First](https://whosonfirst.org). See the [readme](https://github.com/pelias/wof-admin-lookup/blob/master/README.md)
 for [pelias/wof-admin-lookup](https://github.com/pelias/wof-admin-lookup) for more information.  By default,
 adminLookup is enabled.  To disable, set `imports.adminLookup.enabled` to `false` in Pelias config.
 
