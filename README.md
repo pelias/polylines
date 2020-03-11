@@ -27,7 +27,7 @@ $ npm install
 
 ## Download data
 
-Pre-processed planet-wide road network files are available to download from [geocode.earth](https://geocode.earth/data).
+Pre-processed planet-wide road network files are available to download from [Geocode Earth](https://geocode.earth/data).
 
 > Note: the file extensions `.0sv` and `.polylines` are used interchangeably, they both refer to the same file format; however there is code that looks for the `.0sv` extension which is therefore preferable.
 
