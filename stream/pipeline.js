@@ -1,12 +1,10 @@
-
-var split = require('split'),
-    through = require('through2'),
-    model = require('pelias-model'),
-    parser = require('./parser'),
-    unwrap = require('./unwrap'),
-    centroid = require('./centroid'),
-    document = require('./document'),
-    adminLookup = require('pelias-wof-admin-lookup').create;
+const split = require('split2');
+const model = require('pelias-model');
+const parser = require('./parser');
+const unwrap = require('./unwrap');
+const centroid = require('./centroid');
+const document = require('./document');
+const adminLookup = require('pelias-wof-admin-lookup').create;
 
 function pipeline( streamIn, streamOut ){
   return streamIn
