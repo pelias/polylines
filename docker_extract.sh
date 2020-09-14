@@ -25,10 +25,11 @@ for PBF_FILE in "${PBF_FILES[@]}"; do
   find "${PBF_FILE}" -maxdepth 1 -size +1G | while read file; do
     2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
     2>&1 echo "${PBF_FILE} is very large.";
-    2>&1 echo 'You will likely experience memory issues working with large extracts like this.';
     2>&1 echo 'We strongly recommend using Valhalla to produce extracts for large PBF extracts.';
-    2>&1 echo 'see: https://github.com/pelias/polylines#download!data';
+    2>&1 echo 'You can also download pre-processed polyline extracts from Geocode Earth.';
+    2>&1 echo 'see: https://github.com/pelias/polylines#download-data';
     2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
+    exit 1
   done
 
   # convert pbf file to 0sv (polylines) format, appending results to polyline file
