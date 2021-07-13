@@ -24,11 +24,6 @@ We think open data, open source, and open strategy win over proprietary solution
 
 # Pelias Polyline Importer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/pelias/polylines.svg)](https://greenkeeper.io/)
-
-![Travis CI Status](https://travis-ci.org/pelias/polylines.svg)
-[![Gitter Chat](https://badges.gitter.im/pelias/pelias.svg)](https://gitter.im/pelias/pelias?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 The polyline importer facilitates importing road network data in to Pelias from a list of [polyline encoded](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) line strings.
 
 ## Prerequisites
