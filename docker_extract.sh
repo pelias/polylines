@@ -30,8 +30,8 @@ for PBF_FILE in "${PBF_FILES[@]}"; do
     2>&1 echo 'see: https://github.com/pelias/polylines#download-data';
     2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
     
-    echo "Generating polylines from ${PBF_FILE} failed! The file is too large.";
-    echo "Exiting...";
+    2>&1 echo "Generating polylines from ${PBF_FILE} failed! The file is too large.";
+    2>&1 echo "Exiting...";
     exit 1
   done
 
