@@ -29,6 +29,9 @@ for PBF_FILE in "${PBF_FILES[@]}"; do
     2>&1 echo 'You can also download pre-processed polyline extracts from Geocode Earth.';
     2>&1 echo 'see: https://github.com/pelias/polylines#download-data';
     2>&1 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
+    
+    2>&1 echo "Generating polylines from ${PBF_FILE} failed! The file is too large.";
+    2>&1 echo "Exiting...";
     exit 1
   done
 
