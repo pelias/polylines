@@ -10,7 +10,7 @@
     "start": "./bin/start",
     "dry-run": "node bin/cli.js --config --pretty",
     "test": "./bin/test",
-    "travis": "npm test",
+    "ci": "npm test",
     "lint": "jshint .",
     "validate": "npm ls"
   },
