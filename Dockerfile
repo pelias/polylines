@@ -1,19 +1,26 @@
-# base image
+# use multi-stage build to make pbf binary
+FROM pelias/baseimage as builder
+
+RUN apt-get update && apt-get install gcc -y
+
+# install Golang
+ENV GOPATH=/go
+RUN wget -qO- https://golang.org/dl/go1.15.2.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+ENV PATH="${PATH}:/usr/local/go/bin"
+ENV GO111MODULE=on
+
+# install pbf dependency
+RUN go get github.com/missinglink/pbf
+
+# use Pelias baseimage for the main image
 FROM pelias/baseimage
 
 # change working dir
 ENV WORKDIR /code/pelias/polylines
 WORKDIR ${WORKDIR}
 
-# install Golang
-ENV GOPATH=/usr/src/.go
-RUN wget -qO- https://golang.org/dl/go1.15.2.linux-amd64.tar.gz | tar -C /usr/local -xzf -
-RUN mkdir -p "${GOPATH}"
-ENV PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
-ENV GO111MODULE=on
-
-# get go dependencies
-RUN go get github.com/missinglink/pbf
+# copy pbf binary from builder container
+COPY --from=builder /go/bin/pbf /bin/
 
 # copy package.json first to prevent npm install being rerun when only code changes
 COPY ./package.json ${WORKDIR}
