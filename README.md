@@ -174,7 +174,7 @@ Note: golang 1.9+ is required, please ensure this is correctly installed before 
 $ go version
 go version go1.10 linux/amd64
 
-$ go get github.com/missinglink/pbf
+$ go install github.com/missinglink/pbf@latest
 
 $ pbf --help
 
