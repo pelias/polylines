@@ -5,8 +5,8 @@ RUN apt-get update && apt-get install gcc -y
 
 # install Golang
 ENV GOPATH=/go
-ARG TARGETPLATFORM
-RUN wget -qO- "https://golang.org/dl/go1.15.2.linux-${TARGETPLATFORM##*/}.tar.gz" | tar -C /usr/local -xzf -
+ARG TARGETARCH
+RUN wget -qO- "https://golang.org/dl/go1.15.2.linux-${TARGETARCH}.tar.gz" | tar -C /usr/local -xzf -
 ENV PATH="${PATH}:/usr/local/go/bin"
 ENV GO111MODULE=on
 
