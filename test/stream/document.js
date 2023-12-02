@@ -46,6 +46,8 @@ module.exports.tests.document = function(test, common) {
     var expected = new model.Document( 'openstreetmap', 'street', 'polyline:0' )
       .setName( 'default', 'Freese Lane' )
       .setAddress( 'street', 'Freese Lane' )
+      .addCategory( 'address' )
+      .addCategory( 'address:street' )
       .setCentroid({ lon: -117.1275530670822, lat: 44.017448040349564 })
       .setBoundingBox({
         upperLeft: { lat: 44.020076, lon: -117.133015 },

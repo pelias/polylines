@@ -32,6 +32,10 @@ function document( source, layer, idprefix ){
       // street
       doc.setAddress( 'street', geojson.properties.name );
 
+      // category
+      doc.addCategory( 'address' );
+      doc.addCategory( 'address:street' );
+
       // centroid
       var prop = geojson.properties.centroid;
       doc.setCentroid({ lon: prop[0], lat: prop[1] });
