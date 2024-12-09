@@ -53,14 +53,11 @@ function parser( precision ){
 // each connected road can have one or more names
 // we select one name to be the default.
 function selectName( names ){
-  // filter out URLs
-  // then return the longest name
-  // @todo: can we improve this logic?
-  return names.filter( function ( name) {
-    return !name.match(/^http(s)?:\/\//);
-  }).reduce( function( a, b ){
-    return a.length > b.length ? a : b;
-  }, '');
+  // remove URLs then return the longest name
+  return names
+    .map(name => name.replace(/(?:https?|ftp):\/\/\S*/g, '').trim())
+    .sort((a, b) => b.length - a.length)
+    .at(0);
 }
 
 module.exports = parser;
