@@ -132,6 +132,26 @@ module.exports.tests.filter_url = function(test, common) {
     stream.write(row);
     stream.end();
   });
+
+  test('parse: URL removal', (t) => {
+    const stream = parser(6);
+    const row = [
+      'i{s~{AqubwJ{TxV{BlDmBnCiGhJgCbCs@dAaCfHmAnCoBpB',
+      'http://foo.com/bar.pdf',
+      'Short Example https://foo.com/bar.pdf',
+      'Longer Example ftp://foo.com/bar.pdf',
+    ].join('\0');
+    const expected = 'Longer Example';
+
+    const assert = ( actual, enc, next ) => {
+      t.deepEqual( actual.properties.name, expected, 'longest non-URL name selected' );
+      next();
+    };
+
+    stream.pipe( through.obj( assert, () => t.end() ) );
+    stream.write(row);
+    stream.end();
+  });
 };
 
 module.exports.tests.filter_only_url = function(test, common) {
