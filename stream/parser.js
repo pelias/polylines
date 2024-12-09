@@ -56,11 +56,9 @@ function selectName( names ){
   // filter out URLs
   // then return the longest name
   // @todo: can we improve this logic?
-  return names.filter( function ( name) {
-    return !name.match(/^http(s)?:\/\//);
-  }).reduce( function( a, b ){
-    return a.length > b.length ? a : b;
-  }, '');
+  return names
+    .filter(name => !/http(s)?:\/\//.test(name))
+    .reduce((a, b) => a.length > b.length ? a : b, '');
 }
 
 module.exports = parser;
