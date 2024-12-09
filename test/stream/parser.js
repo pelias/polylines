@@ -111,6 +111,27 @@ module.exports.tests.filter_url = function(test, common) {
     stream.write(row);
     stream.end();
   });
+
+  // real-world example where the URL was included with a valid name
+  // (ie. was preceeded by a space rather than a NULL character).
+  test('parse: filter URL within name', (t) => {
+    const stream = parser(6);
+    const row = [
+      'i{s~{AqubwJ{TxV{BlDmBnCiGhJgCbCs@dAaCfHmAnCoBpB',
+      'Sentier des Chasupes',
+      'Mairie Bouxières http://www.mairie-bouxieres-aux-dames.fr/wp-content/uploads/2005/01/Les-sentiers-de-Bouxi%C3%A8res-aux-Dames.pdf',
+    ].join('\0');
+    const expected = 'Sentier des Chasupes';
+
+    const assert = ( actual, enc, next ) => {
+      t.deepEqual( actual.properties.name, expected, 'longest non-URL name selected' );
+      next();
+    };
+
+    stream.pipe( through.obj( assert, () => t.end() ) );
+    stream.write(row);
+    stream.end();
+  });
 };
 
 module.exports.tests.filter_only_url = function(test, common) {
