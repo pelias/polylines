@@ -14,7 +14,7 @@ ENV GO111MODULE=on
 RUN go get github.com/missinglink/pbf
 
 # use Pelias baseimage for the main image
-FROM pelias/baseimage
+FROM pelias/baseimage:nodejs-20
 
 # change working dir
 ENV WORKDIR /code/pelias/polylines
