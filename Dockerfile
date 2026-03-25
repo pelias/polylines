@@ -5,13 +5,12 @@ RUN apt-get update && apt-get install gcc -y
 
 # install Golang
 ENV GOPATH=/go
-ARG TARGETARCH
-RUN wget -qO- "https://golang.org/dl/go1.15.2.linux-${TARGETARCH}.tar.gz" | tar -C /usr/local -xzf -
+ARG TARGETARCH=amd64
+RUN wget -qO- "https://golang.org/dl/go1.24.1.linux-${TARGETARCH}.tar.gz" | tar -C /usr/local -xzf -
 ENV PATH="${PATH}:/usr/local/go/bin"
-ENV GO111MODULE=on
 
 # install pbf dependency
-RUN go get github.com/missinglink/pbf
+RUN go install github.com/missinglink/pbf@latest
 
 # use Pelias baseimage for the main image
 FROM pelias/baseimage
