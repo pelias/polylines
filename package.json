@@ -28,7 +28,7 @@
     "url": "https://github.com/pelias/polylines/issues"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@mapbox/geojson-extent": "^0.3.2",
