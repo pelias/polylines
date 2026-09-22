@@ -1,6 +1,5 @@
 const through = require('through2');
 const polyline = require('@mapbox/polyline');
-const extent = require('@mapbox/geojson-extent');
 const logger = require('pelias-logger').get('polyline');
 
 /**
@@ -36,7 +35,7 @@ function parser( precision ){
         geojson.properties = { name: name };
 
         // compute bbox
-        geojson = extent.bboxify( geojson );
+        geojson.bbox = bbox( geojson.coordinates );
 
         this.push( geojson );
       } else if( cols.length ) {
@@ -48,6 +47,19 @@ function parser( precision ){
 
     next();
   });
+}
+
+// bounding box of a list of coordinates, as [minLon, minLat, maxLon, maxLat]
+function bbox( coordinates ){
+  let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity;
+  for( let i = 0; i < coordinates.length; i++ ){
+    const lon = coordinates[i][0], lat = coordinates[i][1];
+    if( lon < minLon ){ minLon = lon; }
+    if( lon > maxLon ){ maxLon = lon; }
+    if( lat < minLat ){ minLat = lat; }
+    if( lat > maxLat ){ maxLat = lat; }
+  }
+  return [ minLon, minLat, maxLon, maxLat ];
 }
 
 // each connected road can have one or more names
